@@ -1,24 +1,81 @@
-# README
+# Budget App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> The Ruby on Rails Budget App is about building a mobile web application where user can manage the budget: they have a list of transactions associated with a category, so that the user can see how much money they spent and on what.
 
-Things you may want to cover:
+> The project is following data model below: 
+> ![diagram](https://github.com/microverseinc/curriculum-rails/blob/main/capstone/images/erd_diagram.png)
 
-* Ruby version
+## Built With
 
-* System dependencies
+- Ruby
+- Ruby on Rails
+- PostgreSQL
 
-* Configuration
+## Getting Started
 
-* Database creation
+- [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your local machine 
+- [Install Ruby on Rails](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- Clone [this repository](https://github.com/Meri-MG/budget-app-rails)
+  ```
+  git clone git@github.com:Meri-MG/budget-app-rails.git
+  ```
+- To get started, In the root directory run:
+  ```
+  gem install bundler
+  ```
+  Then run:
+  ```
+  bundle install
+  ```
+  To start the server run: 
 
-* Database initialization
+  ```
+  rails s
+  ```
+  Open the browser with `localhost:3000`
 
-* How to run the test suite
+  
+## After installing bundle
 
-* Services (job queues, cache servers, search engines, etc.)
+Please run the following commands `rails db:create` `rails db:migrate` `rails s`
 
-* Deployment instructions
+## Tests
+```
+bundle exec rspec
+```
+Or
+```
+rspec spec
+```
+### To track linter errors locally follow these steps:  
 
-* ...
+Track linter errors run:
+```
+rubocop
+```
+
+## Author
+
+:woman: **Meri Gogichashvili**
+
+- [GitHub](https://github.com/Meri-MG)
+- [LinkedIn](https://www.linkedin.com/in/meri-gogichashvili/)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Meri-MG/budget-app-rails/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Thanks [Gregoire Vella on Behance](https://www.behance.net/gregoirevella) for the original design idea.
+- Thanks to my morning session partners, coding partners and teammates.
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
