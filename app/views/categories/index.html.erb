@@ -1,1 +1,10 @@
 <h1>Hi categories</h1>
+
+<% @categories.each do |category| %>
+  <p><%= category.name %></p>
+  <p><%= category.icon %></p>
+  <p><%= category.user.name %></p>
+  <%= link_to 'Show', category_path(category) %>
+<% end %>
+
+<%= link_to 'Add Category', new_category_path(@category) %>

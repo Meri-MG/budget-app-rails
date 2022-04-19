@@ -1,0 +1,25 @@
+<%= link_to '< Back', root_path %>
+<% if @category.errors.any? %>
+<h2>The following errors prevented the category from being saved</h2>
+<ul>
+  <% @category.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+<%= form_with(model: @category, local: true) do |f| %>
+<p > 
+  <%= f.label :name %><br />
+  <%= f.text_field :name, placeholder: 'Category name' %>
+</p>
+
+<p> 
+  <%= f.label :icon %><br />
+  <%= f.text_area :icon, placeholder: 'Icon, url path' %>
+</p>
+
+<p >
+  <%= f.submit 'Save' %>
+</p>
+<% end %>
+
