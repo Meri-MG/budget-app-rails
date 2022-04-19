@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Purchase, type: :model do
   subject do
-    user = User.create(name: 'Barbare')
+    user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
     Purchase.new(user: user, name: 'jumping rope', amount: 23)
   end
 
@@ -31,6 +31,10 @@ RSpec.describe Purchase, type: :model do
     it 'isn\'t valid with no preparation time' do
       subject.amount = 0
       expect(subject).to_not be_valid
+    end
+
+    it 'the amount to be an integer' do
+      expect(subject.amount).to be_integer
     end
   end
 end
