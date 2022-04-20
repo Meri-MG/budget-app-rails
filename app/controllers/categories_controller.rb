@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @purchases = @category.purchases
     @user = @category.user
   end
 

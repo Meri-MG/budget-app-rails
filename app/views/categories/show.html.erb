@@ -1,1 +1,9 @@
 <h1>hi show pages</h1>
+
+<% @purchases.each do |purchase| %>
+  <p><%= purchase.name %></p> 
+  <p><%= purchase.amount %></p>
+  <p><%= purchase.category.name %></p>
+<% end %>
+
+<%= link_to 'Add Transaction', new_category_purchase_path(@category.id, @purchase) %>
