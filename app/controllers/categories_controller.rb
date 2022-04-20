@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.order(:name)
   end
 
   def new
@@ -9,8 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @purchases = @category.purchases
-    @user = @category.user
+    @purchases = @category.purchases.order('created_at DESC')
   end
 
   def create

@@ -1,21 +1,19 @@
 class PurchasesController < ApplicationController
   def index
-    @purchases = Purchase.includes(:category)
+    # @purchases = Purchase.includes(:category)
+    redirect_to category_path
   end
 
   def new
     @purchase = Purchase.new
-    @categories = Category.all
   end
 
   def create
-    @purchase = Purchase.new(purchase_params)
-    @purchase.author_id = current_user.id
-    @category = Category.find(params[:category_id])
-    @purchase.category_id = @category.id
+    @purchase =Purchase.new(purchase_params)
+    @purchase.author = current_user
     if @purchase.save
       flash[:notice] = 'Transaction was created successfully.'
-      redirect_to user_category_purchases_path(current_user.id, @category.id)
+      redirect_to @purchase.categories.first
     else
       flash[:notice] = 'Oops, something went wrong!'
       render 'new', status: :unprocessable_entity
@@ -25,6 +23,6 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase).permit(:name, :amount)
+    params.require(:purchase).permit(:name, :amount, category_ids: [])
   end
 end

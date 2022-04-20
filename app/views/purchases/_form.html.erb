@@ -7,7 +7,7 @@
   <% end %>
 </ul>
 <% end %>
-<%= form_with(model: @purchase,  url:"/categories/#{@category_id}/purchases" ) do |f| %>
+<%= form_for :purchase, url: purchases_path do |f| %>
 <p>
   <%= f.label :name %><br />
   <%= f.text_field :name, placeholder: 'Enter Transaction Name' %>
@@ -18,7 +18,10 @@
   <%= f.number_field :amount, step: :any, placeholder: 'Enter Amount' %>
 </p>
 
-
+<p>
+  <%= f.label :category_id %><br />
+  <%= f.collection_select :category_ids, current_user.categories.order(:name), :id, :name, {}, prompt: true %>
+</p>
 
 <p >
   <%= f.submit 'Save' %>
