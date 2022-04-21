@@ -1,0 +1,16 @@
+<nav class="flex justify-center space-x-4 bg-blue-500 text-white">
+  </ul>
+      <% if current_user %>
+      <li class="mx-3 text-lg font-medium hover:text-orange-500 border border-orange-500 py-2 px-4 text-orange-500">
+          <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <li class="mx-3 text-lg font-medium hover:text-blue-500">
+          <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
+      </li>
+      <li class="mx-3 text-lg font-medium hover:text-blue-500">
+          <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+      </li>
+      <% end %>
+  </ul>
+</nav>
