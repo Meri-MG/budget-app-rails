@@ -22,6 +22,18 @@ class ExpensesController < ApplicationController
   # POST /expenses or /expenses.json
   def create
     @expense = Expense.new(expense_params)
+    if current_user.nil?
+      redirect_to expenses_path
+      return
+    end
+    name = expense_params[:name]
+    amount = expense_params[:amount]
+    @expense = Expense.new(name:, amount:)
+    @expense.user_id = current_user.id
+    puts expense_params
+    expense_params[:categories].each do |category|
+      @expense.categories.push(Category.find(category)) unless category == ''
+    end
 
     respond_to do |format|
       if @expense.save
@@ -65,6 +77,6 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.require(:expense).permit(:name, :amount)
+      params.require(:expense).permit(:name, :amount, categories: [])
     end
 end
