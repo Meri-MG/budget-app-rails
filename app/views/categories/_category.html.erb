@@ -1,22 +1,15 @@
 <div id="<%= dom_id category %>">
 
-<p>
-    <strong>Author:</strong>
-    <%= category.user.name %>
-  </p>
-  <p>
-    <strong>Category Name:</strong>
-    <%= category.name %>
-  </p>
+  <div class="flex flex-col">
+    <p class="text-gray-900 font-bold text-md uppercase"><%= category.name %></p>
+    <small class="text-gray-600"><%= category.created_at.strftime("%m/%d/%Y") %></small>
+  </div>
 
-  <p>
-    <strong>Icon:</strong>
+  <div class="flex flex-col">
     <%= category.icon %>
-  </p>
+  </div>
 
-  <p>
-    <strong>Total transactions:</strong>
-    $<%= category.expenses.inject(0) { |total, e| total + (e.amount) }%>
-  </p>
-
+  <div>
+    <p class="text-gray-700">Total: $<%= category.expenses.inject(0) { |total, e| total + (e.amount) }%></p>
+  </div>
 </div>
