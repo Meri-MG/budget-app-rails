@@ -1,14 +1,36 @@
-<p style="color: green"><%= notice %></p>
+<nav class="flex justify-center align-center space-x-4 bg-[#3671b9] text-white">
+  <ul class="w-full flex flex-row justify-between p-5">
+    <li>
+      <i class="text-xl fa-solid fa-bars"></i>
+    </li>
+    <li>
+      <h1 class="text-xl text-center uppercase">Categories</h1>
+    </li>
+    <li>
+      <i class="fa-solid fa-circle-dollar"></i>
+    </li>
+  </ul>
+</nav>
 
-<h1>Categories</h1>
+<% @categories.each do |category| %>
+  <div class="flex justify-between align-center shadow-lg border p-4 flex mb-6">
+    <div class="mr-2 flex items-start">
+      <%= category.icon %>
+    </div>
+    <div class="flex flex-col items-start">
+      <p class="text-gray-900 font-bold text-md uppercase"><%= category.name %></p>
+      <small class="text-gray-600"><%= category.created_at.strftime("%m/%d/%Y") %></small>
+    </div>
+    <div class="flex items-start">
+      <div class="text-sm">
+      <p class="text-gray-700">Total: $<%= category.expenses.inject(0) { |total, e| total + (e.amount) }%></p>
+        <ul class="flex items-center mt-2">
+          <li class=""><%=link_to "Show", category, class: 'text-green-500' %></li>
+          <li class="ml-5"><%= button_to 'Delete', category, class: 'text-red-400', method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this category?" }} %></li>
+          <li class="ml-5"><%= link_to "Create", new_category_path, class: 'text-[#3671b9]' %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New category", new_category_path %>
