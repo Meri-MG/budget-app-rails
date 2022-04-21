@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 3, maximum: 250 }
 
-  def admin?
-    role == 'admin'
+  def admin?(request)
+    role == request.to_s
   end
 end
