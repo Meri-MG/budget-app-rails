@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @category %>
+<% @expenses.each do |transaction| %>
+  <p>Name of the transaction: <%= transaction.name %></p>
+  <p>Amount: <%= transaction.amount %></p>
+  <p>Date: <%= transaction.created_at.strftime("%m/%d/%Y %I:%M %p") %></p>
+<% end %>
+
+<div>
+  <%= link_to "New category", new_category_path %>|
+  <%= link_to "Back to categories", categories_path %>|
+  <%= link_to "Add new transaction", new_expense_path %>
+
+  <%= button_to "Destroy this category", @category, method: :delete %>
+</div>
