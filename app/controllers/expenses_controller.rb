@@ -13,31 +13,23 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
-  end
-
-  # GET /expenses/1/edit
-  def edit
+    @categories = Category.where(user_id: current_user.id)
   end
 
   # POST /expenses or /expenses.json
   def create
-    @expense = Expense.new(expense_params)
-    if current_user.nil?
-      redirect_to expenses_path
-      return
-    end
-    name = expense_params[:name]
-    amount = expense_params[:amount]
-    @expense = Expense.new(name:, amount:)
+    params = expense_params
+    @expense = Expense.new(name: params[:name], amount: params[:amount])
     @expense.user_id = current_user.id
-    puts expense_params
-    expense_params[:categories].each do |category|
-      @expense.categories.push(Category.find(category)) unless category == ''
+    @categories_ids = params[:categories_ids]
+    @categories_ids.each do |id|
+      category = Category.find(id) unless id == ''
+      @expense.categories.push(category) unless category.nil?
     end
 
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to expense_url(@expense), notice: "Expense was successfully created." }
+        format.html { redirect_to expense_url(@expense), notice: "Transaction was successfully created." }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +42,7 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
-        format.html { redirect_to expense_url(@expense), notice: "Expense was successfully updated." }
+        format.html { redirect_to expense_url(@expense), notice: "Transaction was successfully updated." }
         format.json { render :show, status: :ok, location: @expense }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,7 +56,7 @@ class ExpensesController < ApplicationController
     @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: "Expense was successfully destroyed." }
+      format.html { redirect_to expenses_url, notice: "Transaction was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -77,6 +69,6 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.require(:expense).permit(:name, :amount, categories: [])
+      params.require(:expense).permit(:name, :amount, categories_ids: [])
     end
 end

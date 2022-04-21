@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  has_many :categories
-  has_many :payments
+  has_many :categories, dependent: :destroy
+  has_many :payments, dependent: :destroy
+
+  validates :name, presence: true, length: { minimum: 3, maximum: 250 }
 end
