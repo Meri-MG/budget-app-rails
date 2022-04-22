@@ -7,14 +7,14 @@
       <h1 class="text-xl text-center uppercase">Register</h1>
     </li>
     <li>
-      <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "text-white text-xl uppercase" %>
+      <i class="fa-solid fa-circle-dollar"></i>
     </li>
   </ul>
 </nav>
 
-<div class="min-h-screen flex justify-center items-center bg-white mt-5">
-  <div class="p-10 border-[1px] -mt-10 border-slate-200 rounded-md flex flex-col items-center space-y-3">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="min-h-screen flex justify-center items-center bg-white">
+  <div class="p-10 border-[1px] -mt-15 border-slate-200 rounded-md flex flex-col items-center space-y-3">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field py-3">
@@ -34,7 +34,7 @@
       </div>
 
       <div class="actions py-3">
-        <%= f.submit "Sign up", class: "w-full border-blue-900 hover:border-[#003087] hover:border-[2px] border-[1px] rounded-3xl p-3 text-[#0070ba] font-bold text-center focus:outline-none" %>
+        <%= f.submit "Sign up", class: "w-80 border-blue-900 hover:border-[#003087] hover:border-[2px] border-[1px] rounded-3xl p-3 text-[#0070ba] font-bold text-center focus:outline-none" %>
       </div>
     <% end %>
 
