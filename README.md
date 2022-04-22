@@ -11,6 +11,11 @@
 - Ruby on Rails
 - PostgreSQL
 
+## Live Demo 
+
+[Check the app](https://fathomless-inlet-13455.herokuapp.com/)
+[Video Presentation](https://www.loom.com/share/443abd715e8140fa917faa549a8571d5)
+
 ## Getting Started
 
 - [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your local machine 
