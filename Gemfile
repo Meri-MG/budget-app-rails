@@ -76,3 +76,4 @@ gem 'cancancan'
 gem 'devise'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'shoulda-matchers', require: false
+gem 'rails-controller-testing'
