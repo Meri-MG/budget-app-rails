@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Expenses", type: :request do
-  describe "expenses" do
-    it "GET /expenses" do
+RSpec.describe 'Expenses', type: :request do
+  describe 'expenses' do
+    it 'GET /expenses' do
       get expenses_path
       expect(response).to render_template('index')
       expect(response).to have_http_status(200)

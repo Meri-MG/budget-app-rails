@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Categories", type: :request do
-  describe "categories" do
-    it "GET /categories" do
+RSpec.describe 'Categories', type: :request do
+  describe 'categories' do
+    it 'GET /categories' do
       get categories_path
       expect(response).to render_template('index')
       expect(response).to have_http_status(200)

@@ -26,8 +26,8 @@ RSpec.feature 'Categories', type: :system do
     end
 
     it 'should check the content of category attributes on the page' do
-      expect(page).to have_content("SPORTS")
-      expect(page).to have_content("some icon")
+      expect(page).to have_content('SPORTS')
+      expect(page).to have_content('some icon')
     end
 
     it 'add category' do
@@ -43,7 +43,7 @@ RSpec.feature 'Categories', type: :system do
 
       click_button 'Save'
 
-      expect(page).to have_current_path("/categories/#{category.id+1}")
+      expect(page).to have_current_path("/categories/#{category.id + 1}")
       expect(page).to have_content('Category was successfully created.')
       expect(page).to have_content('TOTAL TRANSACTIONS')
       expect(page).to have_content('$0')
@@ -64,7 +64,6 @@ RSpec.feature 'Categories', type: :system do
 
       click_button 'Save'
     end
-
   end
 end
 
