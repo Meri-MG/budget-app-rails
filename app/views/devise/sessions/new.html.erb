@@ -14,12 +14,18 @@
 
 <div class="min-h-screen flex justify-center items-center bg-white mt-5">
   <div class="p-10 border-[1px] -mt-10 border-slate-200 rounded-md flex flex-col items-center space-y-3">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+      <%- end -%>
+
       <div class="field py-3">
+        <%= f.label :email, class: "text-gray-700" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email", class: "p-3 border-[1px] border-slate-500 rounded-sm w-80 focus:outline-none" %>
       </div>
 
       <div class="field py-3">
+        <%= f.label :password, class: "text-gray-700" %><br />
         <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter your password", class: "p-3 border-[1px] border-slate-500 rounded-sm w-80 focus:outline-none" %>
       </div>
 
