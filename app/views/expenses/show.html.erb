@@ -1,0 +1,25 @@
+<nav class="flex justify-center align-center space-x-4 bg-[#3671b9] text-white">
+  <ul class="w-full flex flex-row justify-between p-5">
+    <li>
+      <%= link_to '', expenses_path, class: "text-xl fa-solid fa-arrow-left" %>
+    </li>
+    <li>
+      <h1 class="text-xl text-center uppercase">Transaction Details</h1>
+    </li>
+    <li>
+      <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "text-white text-xl uppercase" %>
+    </li>
+  </ul>
+</nav
+
+<p style="color: green"><%= notice %></p>
+
+<div class="flex justify-between align-center shadow-lg border p-4 flex mb-6">
+  <div class="w-full">
+    <%= render @expense %>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "Back to categories", categories_path, class: "font-bold text-[#3671b9] text-center uppercase" %>
+</div>
