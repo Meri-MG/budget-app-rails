@@ -1,13 +1,13 @@
 <nav class="flex justify-center align-center space-x-4 bg-[#3671b9] text-white">
   <ul class="w-full flex flex-row justify-between p-5">
     <li>
-      <%= link_to '', categories_path, class: "text-xl fa-solid fa-arrow-left" %>
+      <%= link_to "", categories_path, class: "text-xl fa-solid fa-arrow-left" %>
     </li>
     <li>
       <h1 class="text-xl text-center uppercase">Category details</h1>
     </li>
     <li>
-      <%= button_to 'Log out', destroy_user_session_path, method: :delete, class: "text-white text-xl uppercase" %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "text-white text-xl uppercase" %>
     </li>
   </ul>
 </nav>
@@ -16,7 +16,7 @@
 <div class="shadow-lg border p-4 flex flex-col text-center mb-6">
   <div class="flex justify-between">
     <p class="text-gray-700 uppercase">Total Transactions:</p>
-    <p class="text-gray-700">$<%= @category.expenses.inject(0) { |total, e| total + (e.amount) }%></p>
+    <p class="text-gray-700">$<%= @category.expenses.inject(0) { |total, e| total + (e.amount) } %></p>
   </div>
 </div>
 
